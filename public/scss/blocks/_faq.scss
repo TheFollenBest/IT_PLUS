@@ -1,0 +1,54 @@
+.faq {
+    padding: 150px 55px;
+    display: flex;
+    justify-content: space-between;
+    &__title {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 49px;
+        max-width: 410px;
+        width: 100%;
+    }
+
+    &__wrp {
+        max-width: 648px;
+        width: 100%;
+    }
+
+    &__btn {
+        max-width: 648px;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        border-left: none;
+        border-right: none;
+        outline: none;
+        width: 100%;
+        background-color: white;
+        padding: 40px 0;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: left;
+    }
+
+    &__inner {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 16px;
+
+        padding: 20px 0;
+        display: none;
+        background-color: black;
+        overflow: hidden;
+        color: white;
+    }
+
+    &__text {}
+}

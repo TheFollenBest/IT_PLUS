@@ -1,0 +1,73 @@
+.header {
+    &__wrp {
+        display: flex;
+        align-items: center;
+        margin-top: -15px;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        font-family: 'Bebas Neue';
+        font-style: normal;
+
+        font-size: 64px;
+        line-height: 77px;
+        color: white;
+        background-color: black;
+        padding: 15px 14px 0 14px;
+
+        &--plus {
+            font-size: 24px;
+            line-height: 29px;
+        }
+    }
+
+    &__nav {}
+
+    &__nav-list {
+        display: flex;
+        padding: 15px 0 0;
+        gap: 30px;
+    }
+
+    &__nav-item {}
+
+    &__login {
+        margin: 10px 15px 0 0;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+
+        border: 3px solid #4E5AFF;
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 10px 32px;
+        color: black;
+
+        transition: 0.3s;
+
+        &:hover{
+            background-color: var(--purple);
+            color: white;
+        }
+    }
+}
+
+.container {}
+
+.nav-list {}
+
+.nav-item {
+
+    &__link {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: black;
+    }
+}
