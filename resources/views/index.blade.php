@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <!-- HEADER -->
     <header class="header">
         <div class="header__wrp container">
-            <a class="header__logo" href="index.blade.php">
+            <a class="header__logo" href="{{route ('index')}}">
                 IT<span class="header__logo--plus">+</span>PLUS
             </a>
             <nav class="header__nav">
@@ -55,7 +55,7 @@
 
             <!-- Модальное содержание -->
             <div class="modal-content">
-                <img src="../../../../../Users/proto/Downloads/IT_PLUS-main/img/modal-img.png" alt="modal-img">
+                <img src="img/modal-img.png" class="modal__img" alt="modal-img">
                     <form class="modal-form" action="post">
                         <p class="modal-title">Авторизация</p>
                         <input class="modal-input" type="text" placeholder="Логин">
@@ -124,7 +124,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--white">Начальный HTML</p>
-                    <a href="course_html.blade.php" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <a href="{{ route('html-course') }}" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--peach cards-item">
@@ -139,7 +139,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный CSS</p>
-                    <a href="course_css.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="user/course_css.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--green cards-item">
@@ -160,7 +160,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="course_js.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="user/course_js.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">
@@ -301,8 +301,8 @@
     </footer>
     <!-- FOOTER END -->
 
-    <script src="../../../../../Users/proto/Downloads/IT_PLUS-main/js/modal.js"></script>
-    <script src="../../../../../Users/proto/Downloads/IT_PLUS-main/js/accordion.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/accordion.js"></script>
 </body>
 
 </html>

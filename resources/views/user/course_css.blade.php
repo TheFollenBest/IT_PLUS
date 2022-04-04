@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Курс-HTML</title>
-    <link rel="stylesheet" href="../../../../../Users/proto/Downloads/IT_PLUS-main/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <!-- HEADER -->
     <header class="header">
         <div class="header__wrp container">
-            <a class="header__logo" href="index.blade.php">
+            <a class="header__logo" href="../index.blade.php">
                 IT<span class="header__logo--plus">+</span>PLUS
             </a>
             <nav class="header__nav">
@@ -51,11 +51,11 @@
         <p class="preview-course__subtitle">Бесплатно</p>
         <div class="preview-course__wrp">
             <div class="preview-course__wrp-inner">
-                <h2 class="preview-course__title">Начальный курс по HTML</h2>
-                <p class="preview-course__text">Вы с нуля научитесь создавать полноценные сайты и веб-приложения. Освоите HTML, CSS, JavaScript и PHP, познакомитесь с фреймворками и станете востребованным веб-разработчиком. Даже если до этого не программировали.</p>
-                <a href="lesson_html.blade.php" class="preview-course__btn">Начать учиться</a>
+                <h2 class="preview-course__title">Начальный курс по CSS</h2>
+                <p class="preview-course__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias pariatur, provident sit quas praesentium magnam corrupti error dolorem nobis repellendus laboriosam non alias nulla iste, enim similique quibusdam blanditiis sed?</p>
+                <a href="" class="preview-course__btn">Начать учиться</a>
             </div>
-            <img class="preview-course__img" src="../../../../../Users/proto/Downloads/IT_PLUS-main/img/html-course.png" alt="html-course">
+            <img class="preview-course__img" src="img/html-course.png" alt="html-course">
         </div>
     </section>
     <!-- PREVIEW END -->
@@ -63,13 +63,13 @@
     <!-- EDUCATION -->
     <section class="education container">
         <div class="education-wrp-top">
-            <h2 class="education__title">Зачем нужен HTML?</h2>
-            <p class="education__text"><span class="education__text--bold">HTML</span> (от английского <span class="education__text--bold">HyperText Markup Language</span>) — это язык гипертекстовой разметки страницы. Он используется для того, чтобы дать браузеру понять, как нужно отображать загруженный сайт.</p>
+            <h2 class="education__title">Зачем нужен CSS?</h2>
+            <p class="education__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, minus! Corrupti ea suscipit omnis quasi perferendis vel deleniti in nostrum voluptas consequatur aut, laudantium, provident quas tempore impedit molestias quo.</p>
         </div>
 
         <div class="education-wrp-bottom">
-            <h2 class="education__title">Возможности HTML</h2>
-            <p class="education__text"><span class="education__text--bold">Язык состоит из тегов</span> — это своеобразные команды, которые преобразовываются в визуальные объекты в браузере пользователя. Например, тег &lt;img&gt; используется для размещения изображений на странице. У него есть обязательный атрибут src, в котором указывается ссылка на файл.</p>
+            <h2 class="education__title">Возможности CSS</h2>
+            <p class="education__text"><span class="education__text--bold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>Consectetur, earum rerum? Rem provident facilis unde atque harum vitae recusandae, corrupti ratione pariatur corporis reprehenderit sit alias dolorem, odit eum exercitationem!</p>
         </div>
     </section>
     <!-- EDUCATION END -->
@@ -79,22 +79,22 @@
         <h2 class="learn__title">Что вы узнаете:</h2>
         <ul class="learn__list">
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Структура HTML-документа</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Теги HTML</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Заголовки</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Абзац</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Ссылки</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Наследование</p>
+                <p class="learn-item__text">Lorem, ipsum dolor.</p>
             </li>
         </ul>
     </section>
@@ -125,7 +125,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__wrp container">
-            <a class="footer__logo" href="index.blade.php">
+            <a class="footer__logo" href="../index.blade.php">
                 IT<span class="header__logo--plus">+</span>PLUS
             </a>
             <nav class="footer__nav">
@@ -177,7 +177,7 @@
         </div>
     </footer>
     <!-- FOOTER END -->
-    <script src="../../../../../Users/proto/Downloads/IT_PLUS-main/js/accordion.js"></script>
+    <script src="js/accordion.js"></script>
 </body>
 
 </html>
