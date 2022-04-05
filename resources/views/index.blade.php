@@ -57,6 +57,7 @@
             <div class="modal-content">
                 <img src="img/modal-img.png" class="modal__img" alt="modal-img">
                     <form class="modal-form" action="post">
+                        @csrf
                         <p class="modal-title">Авторизация</p>
                         <input class="modal-input" type="text" placeholder="Логин">
                         <input class="modal-input" type="text" placeholder="Пароль">
@@ -160,7 +161,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="user/course_js.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="{{ route('js-course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">
