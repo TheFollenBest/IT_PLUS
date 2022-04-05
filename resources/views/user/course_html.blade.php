@@ -13,7 +13,7 @@
     <!-- HEADER -->
     <header class="header">
         <div class="header__wrp container">
-            <a class="header__logo" href="{{route ('home')}}">
+            <a class="header__logo" href="{{route ('index')}}">
                 IT<span class="header__logo--plus">+</span>PLUS
             </a>
             <nav class="header__nav">

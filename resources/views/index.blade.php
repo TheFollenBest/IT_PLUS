@@ -161,7 +161,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="{{ route('js-course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">
