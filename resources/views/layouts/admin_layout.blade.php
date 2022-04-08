@@ -92,35 +92,35 @@
 
                         <li class="nav-header">КУРСЫ</li>
                         <li class="nav-item">
-                            <a href="{{ route('coursesAdmin') }}" class="nav-link">
+                            <a href="{{ route('courses.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-laptop-code"></i>
                                 <p>Список курсов</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-laptop-medical"></i>
-                                <p>Добавление курсов</p>
+                            <a href="{{ route('courses.create') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-plus"></i>
+                                <p>Добавление курса</p>
                             </a>
                         </li>
 
                         <li class="nav-header">УРОКИ</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('lessons.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-book"></i>
                                 <p>Список уроков</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-book-medical"></i>
-                                <p>Добавление уроков</p>
+                            <a href="{{ route('lessons.create') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-plus"></i>
+                                <p>Добавление урока</p>
                             </a>
                         </li>
                         <li class="nav-header">ПОЛЬЗОВАТЕЛИ</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('users.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-users"></i>
                                 <p>Список пользователей</p>
                             </a>
@@ -166,6 +166,7 @@
     <!-- daterangepicker -->
     <script src="/admin/plugins/moment/moment.min.js"></script>
     <script src="/admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Summernote -->
@@ -174,6 +175,12 @@
     <script src="/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/admin/dist/js/adminlte.js"></script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
 </body>
 
 </html>

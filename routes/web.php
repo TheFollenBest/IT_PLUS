@@ -16,6 +16,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
-    Route::get('/courses', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('coursesAdmin');
-
+    Route::resource('courses', App\Http\Controllers\Admin\CourseController::class);
+    Route::resource('lessons', App\Http\Controllers\Admin\LessonController::class);
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
 });

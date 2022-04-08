@@ -1,13 +1,13 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Список курсов')
+@section('title', 'Список пользователей')
 
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Список курсов</h3>
+                    <h3 class="card-title">Список пользователей</h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -27,21 +27,23 @@
                         <thead>
                         <tr>
                             <th style="width:3%">ID</th>
-                            <th>Наименование</th>
-                            <th>Описание</th>
-                            <th>Дата создания</th>
+                            <th>Имя</th>
+                            <th>Email</th>
+                            <th>Роль</th>
+                            <th>Дата регистрации</th>
                             <th style="width:20%"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($courses as $course)
+                        @foreach($users as $user)
 
-                        <tr>
-                            <td>{{$course['id']}}</td>
-                            <td>{{$course['name']}}</td>
-                            <td>{{$course['description']}}</td>
-                            <td>{{$course['created_at']}}</td>
-                        </tr>
+                            <tr>
+                                <td>{{$user['id']}}</td>
+                                <td>{{$user['name']}}</td>
+                                <td>{{$user['email']}}</td>
+                                <td>{{$user->getRoleNames()}}</td>
+                                <td>{{$user['created_at']}}</td>
+                            </tr>
 
                         @endforeach
                         </tbody>

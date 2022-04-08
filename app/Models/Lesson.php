@@ -10,6 +10,6 @@ class Lesson extends Model
     use HasFactory;
 
     public function courses(){
-        return $this-> hasMany(Course::class, 'id_course');
+        return $this-> belongsTo(Course::class, 'id_course');
     }
 }
