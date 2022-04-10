@@ -12,11 +12,11 @@ class UnauthorizedException extends HttpException
 
     public static function forRoles(array $roles): self
     {
-        $message = 'User does not have the right roles.';
+        $message = 'У пользователя нет нужных разрешений';
 
         if (config('permission.display_permission_in_exception')) {
             $permStr = implode(', ', $roles);
-            $message = 'User does not have the right roles. Necessary roles are '.$permStr;
+            $message = 'У пользователя нет нужных разрешений. Необходимыми разрешениями являются - '.$permStr;
         }
 
         $exception = new static(403, $message, null, []);
@@ -27,11 +27,11 @@ class UnauthorizedException extends HttpException
 
     public static function forPermissions(array $permissions): self
     {
-        $message = 'User does not have the right permissions.';
+        $message = 'У пользователя нет нужных разрешений';
 
         if (config('permission.display_permission_in_exception')) {
             $permStr = implode(', ', $permissions);
-            $message = 'User does not have the right permissions. Necessary permissions are '.$permStr;
+            $message = 'У пользователя нет нужных разрешений. Необходимыми разрешениями являются - '.$permStr;
         }
 
         $exception = new static(403, $message, null, []);
@@ -42,11 +42,11 @@ class UnauthorizedException extends HttpException
 
     public static function forRolesOrPermissions(array $rolesOrPermissions): self
     {
-        $message = 'User does not have any of the necessary access rights.';
+        $message = 'Пользователь не имеет никаких необходимых прав доступа';
 
         if (config('permission.display_permission_in_exception') && config('permission.display_role_in_exception')) {
             $permStr = implode(', ', $rolesOrPermissions);
-            $message = 'User does not have the right permissions. Necessary permissions are '.$permStr;
+            $message = 'У пользователя нет нужных разрешений. Необходимыми разрешениями являются - '.$permStr;
         }
 
         $exception = new static(403, $message, null, []);
@@ -57,7 +57,7 @@ class UnauthorizedException extends HttpException
 
     public static function notLoggedIn(): self
     {
-        return new static(403, 'User is not logged in.', null, []);
+        return new static(403, 'Пользователь не авторизован', null, []);
     }
 
     public function getRequiredRoles(): array

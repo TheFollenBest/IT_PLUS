@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Курс-HTML</title>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,7 +14,7 @@
     <!-- HEADER -->
     <header class="header">
         <div class="header__wrp container">
-            <a class="header__logo" href="../index.blade.php">
+            <a class="header__logo" href="{{route ('index')}}">
                 IT<span class="header__logo--plus">+</span>PLUS
             </a>
             <nav class="header__nav">
@@ -41,7 +42,38 @@
                     </li>
                 </ul>
             </nav>
-            <a href="#" class="header__login">Войти</a>
+            @guest
+                @if (Route::has('login'))
+                    <a class="nav-link header__login" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                @endif
+
+                {{--                    @if (Route::has('register'))--}}
+                {{--                        <li class="nav-item">--}}
+                {{--                            <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>--}}
+                {{--                        </li>--}}
+                {{--                    @endif--}}
+            @else
+                <div class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-item__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" style="padding-top: 15px" aria-labelledby="navbarDropdown">
+                        @if (Auth::user()->hasRole('admin'))
+                            <a class="dropdown-item" href="{{ route('homeAdmin') }}">Админ-панель</a>
+                        @endif
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Выход') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endguest
         </div>
     </header>
     <!-- HEADER END -->
@@ -51,9 +83,9 @@
         <p class="preview-course__subtitle">Бесплатно</p>
         <div class="preview-course__wrp">
             <div class="preview-course__wrp-inner">
-                <h2 class="preview-course__title">Начальный курс по JavaScript</h2>
-                <p class="preview-course__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam nesciunt magnam a facilis id officia quidem, reprehenderit tenetur eveniet sequi, qui excepturi ad laboriosam odit eaque velit aperiam cupiditate dolore?</p>
-                <a href="" class="preview-course__btn">Начать учиться</a>
+                <h2 class="preview-course__title">Начальный курс по HTML</h2>
+                <p class="preview-course__text">Вы с нуля научитесь создавать полноценные сайты и веб-приложения. Освоите HTML, CSS, JavaScript и PHP, познакомитесь с фреймворками и станете востребованным веб-разработчиком. Даже если до этого не программировали.</p>
+                <a href="{{ route('lesson') }}" class="preview-course__btn">Начать учиться</a>
             </div>
             <img class="preview-course__img" src="img/html-course.png" alt="html-course">
         </div>
@@ -63,13 +95,13 @@
     <!-- EDUCATION -->
     <section class="education container">
         <div class="education-wrp-top">
-            <h2 class="education__title">Зачем нужен JS?</h2>
-            <p class="education__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ratione culpa labore dolore, rem magni incidunt, enim expedita fugiat quis nostrum porro fuga ad esse! Officiis id facilis illum libero!</p>
+            <h2 class="education__title">Зачем нужен HTML?</h2>
+            <p class="education__text"><span class="education__text--bold">HTML</span> (от английского <span class="education__text--bold">HyperText Markup Language</span>) — это язык гипертекстовой разметки страницы. Он используется для того, чтобы дать браузеру понять, как нужно отображать загруженный сайт.</p>
         </div>
 
         <div class="education-wrp-bottom">
-            <h2 class="education__title">Возможности JS</h2>
-            <p class="education__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perspiciatis explicabo in reprehenderit voluptatem repellendus repellat dolorem voluptas ipsa accusamus earum, atque culpa exercitationem obcaecati eveniet incidunt tenetur ratione rerum!</p>
+            <h2 class="education__title">Возможности HTML</h2>
+            <p class="education__text"><span class="education__text--bold">Язык состоит из тегов</span> — это своеобразные команды, которые преобразовываются в визуальные объекты в браузере пользователя. Например, тег &lt;img&gt; используется для размещения изображений на странице. У него есть обязательный атрибут src, в котором указывается ссылка на файл.</p>
         </div>
     </section>
     <!-- EDUCATION END -->
@@ -79,22 +111,22 @@
         <h2 class="learn__title">Что вы узнаете:</h2>
         <ul class="learn__list">
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Структура HTML-документа</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Теги HTML</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Заголовки</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Абзац</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Ссылки</p>
             </li>
             <li class="learn__item learn-item">
-                <p class="learn-item__text">Lorem, ipsum dolor.</p>
+                <p class="learn-item__text">Наследование</p>
             </li>
         </ul>
     </section>

@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Добавление курса')
+@section('title', 'Изменение курса')
 
 @section('content')
 
@@ -16,8 +16,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary">
-                    <form action="{{ route('courses.store') }}" method="POST">
+                    <form action="{{ route('courses.update', $course['id'])}}" method="POST">
                     @csrf
+                    @method('PUT')
 
                     <!-- Заголовок -->
                         <div class="card-header">
@@ -29,19 +30,19 @@
                             <!-- Поле наименование -->
                             <div class="form-group">
                                 <label for="inputName">Наименование</label>
-                                <input type="text" id="inputName" name="name" class="form-control">
+                                <input value="{{ $course['name']}}" type="text" id="inputName" name="name" class="form-control" required>
                             </div>
                             <!-- Поле описание -->
                             <div class="form-group">
                                 <label for="inputDescription">Описание</label>
-                                <textarea id="inputDescription" name="description" class="form-control" rows="4"></textarea>
+                                <textarea id="inputDescription" name="description" class="form-control" rows="4" required>{{ $course['description'] }}</textarea>
                             </div>
                             <!-- Поле выбор фото -->
                             <div class="form-group">
                                 <label for="exampleInputFile">Фото</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" name="img" class="custom-file-input" id="exampleInputFile">
+                                        <input value="{{ $course['img']}}" type="file" name="img" class="custom-file-input" id="exampleInputFile" required>
                                         <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                                     </div>
                                 </div>
@@ -49,17 +50,17 @@
                             <!-- Поле подзаголовок -->
                             <div class="form-group">
                                 <label for="inputClientCompany">Подзаголовок</label>
-                                <input type="text" name="subtitle" id="inputClientCompany" class="form-control">
+                                <input value="{{ $course['subtitle']}}" type="text" name="subtitle" id="inputClientCompany" class="form-control" required>
                             </div>
                             <!-- Поле текст подзаголовка -->
                             <div class="form-group">
                                 <label for="inputProjectLeader">Текст подзаголовка</label>
-                                <textarea id="inputDescription" name="subtitle_text" class="form-control" rows="4"></textarea>
+                                <textarea id="inputDescription" name="subtitle_text" class="form-control" rows="4" required>{{ $course['subtitle_text'] }}</textarea>
                             </div>
                             <!-- Поле содержание -->
                             <div class="form-group">
                                 <label for="inputProjectLeader">Содержание</label>
-                                <textarea id="inputDescription" name="content" class="form-control" rows="4"></textarea>
+                                <textarea id="inputDescription" name="content_course" class="form-control" rows="4" required>{{ $course['content'] }}</textarea>
                             </div>
                             <!-- Кнопка изменить -->
                             <div class="col-12">

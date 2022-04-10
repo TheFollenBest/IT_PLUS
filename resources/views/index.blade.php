@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -42,7 +44,38 @@
                     </li>
                 </ul>
             </nav>
-            <a href="#" class="header__login" id="LogIn">Войти</a>
+                @guest
+                    @if (Route::has('login'))
+                            <a class="nav-link header__login" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                    @endif
+
+{{--                    @if (Route::has('register'))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
+                @else
+                <div class="nav-item dropdown" style="padding-top: 15px">
+                        <a id="navbarDropdown" class="nav-item__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            @if (Auth::user()->hasRole('admin'))
+                                <a class="dropdown-item" href="{{ route('homeAdmin') }}">Админ-панель</a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Выход') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @endguest
         </div>
     </header>
     <!-- HEADER END -->
@@ -50,20 +83,20 @@
 
     <main>
 
-        <!-- ! Модалку переделать полностью -->
+        <!-- ! Модалка -->
         <div id="myModal" class="modal">
 
             <!-- Модальное содержание -->
             <div class="modal-content">
                 <img src="img/modal-img.png" class="modal__img" alt="modal-img">
-                    <form class="modal-form" action="post">
-                        @csrf
-                        <p class="modal-title">Авторизация</p>
-                        <input class="modal-input" type="text" placeholder="Логин">
-                        <input class="modal-input" type="text" placeholder="Пароль">
-                        <button class="modal-btn" type="submit">Войти</button>
-                    </form>
-                    <span class="close">&times;</span>
+                <form class="modal-form" action="POST">
+                    @csrf
+                    <p class="modal-title">Авторизация</p>
+                    <input class="modal-input" type="text" placeholder="Логин">
+                    <input class="modal-input" type="text" placeholder="Пароль">
+                    <button class="modal-btn" type="submit">Войти</button>
+                </form>
+                <span class="close">&times;</span>
             </div>
 
         </div>
@@ -125,7 +158,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--white">Начальный HTML</p>
-                    <a href="{{ route('html-course') }}" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--peach cards-item">
@@ -140,7 +173,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный CSS</p>
-                    <a href="user/course_css.blade.php" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--green cards-item">
@@ -161,7 +194,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">
@@ -171,7 +204,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--white">Другое</p>
-                    <a href="#" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <a href="" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
             </ul>

@@ -72,7 +72,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.courses.edit', [
+            'course' => $course,
+        ]);
     }
 
     /**
@@ -84,7 +86,15 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $course -> name = $request->name;
+        $course -> description = $request->description;
+        $course -> img = $request->img;
+        $course -> subtitle = $request->subtitle;
+        $course -> subtitle_text = $request->subtitle_text;
+        $course -> content = $request->content_course;
+        $course -> save();
 
+        return redirect()->back()->withSuccess('Изменение прошло успешно!');
     }
 
     /**
@@ -95,6 +105,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course ->delete();
+        return redirect()->back()->withSuccess('Удаление прошло успешно!');
     }
 }
