@@ -2,6 +2,63 @@
 
 @section('title', 'Изменение урока')
 
+@push('script')
+    <script src="/summernote/summernote-bs4.min.js"></script>
+    <script src="/summernote/lang/summernote-ru-RU.min.js"></script>
+
+    <script>
+
+        let inputSubtitleText = $("#inputText");
+        $(function() {
+            inputSubtitleText.summernote({
+                lang: 'ru-RU',
+                height: 300,
+
+                toolbar: [
+
+                    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['misc', ['undo', 'redo']]
+                ]
+            });
+
+
+            inputSubtitleText.summernote('code', inputSubtitleText.attr('value'));
+        });
+
+        let inputContent = $("#inputManual");
+        $(function() {
+            inputContent.summernote({
+                lang: 'ru-RU',
+                height: 300,
+
+                toolbar: [
+
+                    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['misc', ['undo', 'redo']]
+                ]
+            });
+
+            inputContent.summernote('code', inputContent.attr('value'));
+        });
+    </script>
+@endpush
+
+@push('style')
+    <link rel="stylesheet" href="/summernote/summernote-bs4.min.css">
+@endpush
+
 @section('content')
 
     <!-- Сообщение при успешном добавлении -->
@@ -34,18 +91,18 @@
                             </div>
                             <!-- Поле описание -->
                             <div class="form-group">
-                                <label for="inputDescription">Текст</label>
-                                <textarea id="inputDescription" name="text" class="form-control" rows="4" required>{{ $lesson['text'] }}</textarea>
+                                <label for="inputDescription">Текст задания</label>
+                                <textarea id="inputText" name="text" class="form-control" rows="4" required>{{ $lesson['text'] }}</textarea>
                             </div>
                             <!-- Поле код -->
                             <div class="form-group">
-                                <label for="inputDescription">Код</label>
-                                <textarea id="inputDescription" name="code" class="form-control" rows="4" required>{{ $lesson['code'] }}</textarea>
+                                <label for="inputDescription">Код <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="editor" name="code" class="form-control">{{ $lesson['code'] }}</textarea>
                             </div>
                             <!-- Поле методичка -->
                             <div class="form-group">
-                                <label for="inputProjectLeader">Методический материал</label>
-                                <textarea id="inputDescription" name="manual" class="form-control" rows="4" required>{{ $lesson['manual'] }}</textarea>
+                                <label for="inputProjectLeader">Методический материал <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="inputManual" name="manual" class="form-control" rows="4">{{ $lesson['manual'] }}</textarea>
                             </div>
                             <!-- Поле выбор курса -->
                             <div class="form-group">
@@ -66,4 +123,15 @@
             </div>
         </div>
     </section>
+
+    <script>
+        let editor = CodeMirror.fromTextArea
+        (document.getElementById('editor'), {
+            mode: "xml",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true",
+            autoCloseBrackets: "true"
+        });
+    </script>
 @endsection

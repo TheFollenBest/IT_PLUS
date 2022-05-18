@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('user_lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_lesson')->constrained('lessons')->cascadeOnUpdate();
-            $table->foreignId('id_user')->constrained('users')->cascadeOnUpdate();
-            $table->foreignId('id_status')->constrained('statuses')->cascadeOnUpdate();
-            $table->text('user_response');
+            $table->foreignId('id_lesson')->constrained('lessons')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_status')->constrained('statuses')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('user_answer');
             $table->timestamps();
         });
     }

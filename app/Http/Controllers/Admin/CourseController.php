@@ -15,8 +15,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('id')->get();
-
+        $courses = Course::orderBy('id')->paginate(10);
 
         return view('admin.courses.index', [
             'courses' => $courses
@@ -107,5 +106,18 @@ class CourseController extends Controller
     {
         $course ->delete();
         return redirect()->back()->withSuccess('Удаление прошло успешно!');
+    }
+
+    public function block(Course $course){
+        if ($course->is_hidden(false))
+        {
+            $course->is_hidden(true);
+        }
+        else
+        {
+            $course->is_hidden(false);
+        }
+        $course -> save();
+        return redirect()->back();
     }
 }

@@ -1,6 +1,65 @@
-@extends('layouts.admin_layout')
+﻿@extends('layouts.admin_layout')
 
 @section('title', 'Изменение курса')
+
+@push('script')
+    <script src="/summernote/summernote-bs4.min.js"></script>
+    <script src="/summernote/lang/summernote-ru-RU.min.js"></script>
+
+    <script>
+
+        let inputSubtitleText = $("#inputSubtitleText");
+        $(function() {
+            inputSubtitleText.summernote({
+                lang: 'ru-RU',
+                height: 300,
+
+                toolbar: [
+
+                    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['misc', ['undo', 'redo']]
+                ]
+            });
+
+
+            inputSubtitleText.summernote('code', inputSubtitleText.attr('value'));
+        });
+
+        let inputContent = $("#inputContent");
+        $(function() {
+            inputContent.summernote({
+                lang: 'ru-RU',
+                height: 300,
+
+                toolbar: [
+
+                    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['misc', ['undo', 'redo']]
+                ]
+            });
+
+
+            inputContent.summernote('code', inputContent.attr('value'));
+        });
+    </script>
+@endpush
+
+@push('style')
+    <link rel="stylesheet" href="/summernote/summernote-bs4.min.css">
+
+@endpush
 
 @section('content')
 
@@ -42,7 +101,7 @@
                                 <label for="exampleInputFile">Фото</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input value="{{ $course['img']}}" type="file" name="img" class="custom-file-input" id="exampleInputFile" required>
+                                        <input value="{{ $course['img']}}" type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" required>
                                         <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                                     </div>
                                 </div>
@@ -50,17 +109,17 @@
                             <!-- Поле подзаголовок -->
                             <div class="form-group">
                                 <label for="inputClientCompany">Подзаголовок</label>
-                                <input value="{{ $course['subtitle']}}" type="text" name="subtitle" id="inputClientCompany" class="form-control" required>
+                                <input value="{{ $course['subtitle']}}" type="text" name="subtitle" id="inputSubtitle" class="form-control" required>
                             </div>
                             <!-- Поле текст подзаголовка -->
                             <div class="form-group">
                                 <label for="inputProjectLeader">Текст подзаголовка</label>
-                                <textarea id="inputDescription" name="subtitle_text" class="form-control" rows="4" required>{{ $course['subtitle_text'] }}</textarea>
+                                <textarea name="subtitle_text" class="form-control" id="inputSubtitleText" rows="4" required>{{ $course['subtitle_text'] }}</textarea>
                             </div>
                             <!-- Поле содержание -->
                             <div class="form-group">
                                 <label for="inputProjectLeader">Содержание</label>
-                                <textarea id="inputDescription" name="content_course" class="form-control" rows="4" required>{{ $course['content'] }}</textarea>
+                                <textarea id="inputContent" name="content_course" class="form-control" rows="4" required>{{ $course['content'] }}</textarea>
                             </div>
                             <!-- Кнопка изменить -->
                             <div class="col-12">

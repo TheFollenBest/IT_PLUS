@@ -39,6 +39,7 @@
                                 <th>Наименование</th>
                                 <th>Курс</th>
                                 <th>Дата создания</th>
+                                <th>Дата изменения</th>
                                 <th style="width:20%"></th>
                             </tr>
                             </thead>
@@ -49,7 +50,10 @@
                                     <td>{{$lesson['id']}}</td>
                                     <td>{{$lesson['name']}}</td>
                                     <td>{{$lesson-> courses -> name ?? ''}}</td>
-                                    <td>{{$lesson['created_at']}}</td>
+                                    <td>{{ Str::limit($lesson['created_at'], $limit = 10, $end = '') }}
+                                    </td>
+                                    <td>{{ Str::limit($lesson['updated_at'], $limit = 10, $end = '') }}
+                                    </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-success btn-sm" href="{{ route('lessons.edit', $lesson['id']) }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
@@ -70,6 +74,7 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                {{ $lessons->links()  }}
                 <!-- /.card -->
             </div>
         </div>

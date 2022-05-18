@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->string('img');
-            $table->string('subtitle');
-            $table->text('subtitle_text');
+            $table->text('description')->nullable();
+            $table->string('img')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->text('subtitle_text')->nullable();
             $table->text('content');
+            $table->boolean('is_hidden')->default('false');
             $table->timestamps();
         });
     }

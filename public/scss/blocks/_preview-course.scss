@@ -16,6 +16,7 @@
         display: flex;
         padding: 64px 90px;
         align-items: center;
+        justify-content: space-between;
     }
 
     &__wrp-inner {}
@@ -37,6 +38,7 @@
         line-height: 31px;
         color: #FFFFFF;
         padding: 45px 0 140px;
+        max-width: 580px;
     }
 
     &__btn {

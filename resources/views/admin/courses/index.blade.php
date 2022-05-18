@@ -31,6 +31,7 @@
                                 <th>Наименование</th>
                                 <th>Описание</th>
                                 <th>Дата создания</th>
+                                <th>Дата изменения</th>
                                 <th style="width:20%"></th>
                             </tr>
                             </thead>
@@ -40,20 +41,40 @@
                             <tr>
                                 <td>{{$course['id']}}</td>
                                 <td>{{$course['name']}}</td>
-                                <td>{{$course['description']}}</td>
-                                <td>{{$course['created_at']}}</td>
+                                <td>{{ Str::limit($course['description'], $limit = 50, $end = '') }}...</td>
+{{--                                <td>{{$course['created_at']}}</td>--}}
+                                <td>{{ Str::limit($course['created_at'], $limit = 10, $end = '') }}
+                                </td>
+                                <td>{{ Str::limit($course['updated_at'], $limit = 10, $end = '') }}
+                                </td>
 
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-success btn-sm" href="{{ route('courses.edit', $course['id']) }}">
+                                    <a class="btn btn-success btn-sm" title="Редактировать" href="{{ route('courses.edit', $course['id']) }}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <form action="{{ route('courses.destroy', $course['id']) }}" class="d-inline" method="POST">
                                         @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">
+                                        @method('PUT')
+                                        <button class="btn btn-danger btn-sm" title="Удалить" type="submit">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
+
+{{--                                    <!-- Кнопка блокировки -->--}}
+{{--                                    <form class="d-inline" action="{{ route('courses.block', $course['id']) }}" method="POST">--}}
+{{--                                        @csrf--}}
+{{--                                        @method('PUT')--}}
+
+{{--                                        @if ($course->is_hidden(false))--}}
+{{--                                            <button class="btn btn-warning btn-sm" title="Заблокировать пользователя" href="#">--}}
+{{--                                                <i class="fas fa-ban"></i>--}}
+{{--                                            </button>--}}
+{{--                                        @else--}}
+{{--                                            <button class="btn btn-success btn-sm" title="Разблокировать пользователя" href="#">--}}
+{{--                                                <i class="fas fa-check"></i>--}}
+{{--                                            </button>--}}
+{{--                                        @endif--}}
+{{--                                    </form>--}}
                                 </td>
                             </tr>
 
@@ -63,6 +84,7 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                    {{ $courses->links()  }}
                 <!-- /.card -->
             </div>
         </div>

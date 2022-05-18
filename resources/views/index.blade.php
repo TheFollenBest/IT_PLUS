@@ -158,7 +158,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--white">Начальный HTML</p>
-                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <a href="/courses/{{ $course->id = 1 }}" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--peach cards-item">
@@ -173,7 +173,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный CSS</p>
-                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="/courses/{{ $course->id = 2 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--green cards-item">
@@ -194,7 +194,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="{{ route('course') }}" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <a href="/courses/{{ $course->id = 3 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">

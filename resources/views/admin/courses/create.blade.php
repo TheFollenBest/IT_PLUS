@@ -1,8 +1,67 @@
-@extends('layouts.admin_layout')
+﻿@extends('layouts.admin_layout')
 
 @section('title', 'Добавление курса')
 
 @section('content')
+
+    @push('script')
+        <script src="/summernote/summernote-bs4.min.js"></script>
+        <script src="/summernote/lang/summernote-ru-RU.min.js"></script>
+
+        <script>
+
+            let inputSubtitleText = $("#inputSubtitleText");
+            $(function() {
+                inputSubtitleText.summernote({
+                    lang: 'ru-RU',
+                    height: 300,
+
+                    toolbar: [
+
+                        ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize', 'fontname']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['misc', ['undo', 'redo']]
+                    ]
+                });
+
+
+                inputSubtitleText.summernote('code', inputSubtitleText.attr('value'));
+            });
+
+            let inputContent = $("#inputContent");
+            $(function() {
+                inputContent.summernote({
+                    lang: 'ru-RU',
+                    height: 300,
+
+                    toolbar: [
+
+                        ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize', 'fontname']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['misc', ['undo', 'redo']]
+                    ]
+                });
+
+
+                inputContent.summernote('code', inputContent.attr('value'));
+            });
+        </script>
+    @endpush
+
+    @push('style')
+        <link rel="stylesheet" href="/summernote/summernote-bs4.min.css">
+
+    @endpush
 
 <!-- Сообщение при успешном добавлении -->
 @if (session('success'))
@@ -41,7 +100,7 @@
                             <label for="exampleInputFile">Фото</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" name="img" class="custom-file-input" id="exampleInputFile" required>
+                                    <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" required>
                                     <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                                 </div>
                             </div>
@@ -49,17 +108,17 @@
                         <!-- Поле подзаголовок -->
                         <div class="form-group">
                             <label for="inputClientCompany">Подзаголовок</label>
-                            <input type="text" name="subtitle" id="inputClientCompany" class="form-control" required>
+                            <input type="text" name="subtitle" id="inputSubtitle" class="form-control" required>
                         </div>
                         <!-- Поле текст подзаголовка -->
                         <div class="form-group">
                             <label for="inputProjectLeader">Текст подзаголовка</label>
-                            <textarea id="inputDescription" name="subtitle_text" class="form-control" rows="4" required></textarea>
+                            <textarea id="inputSubtitleText" name="subtitle_text" class="form-control" rows="4" required></textarea>
                         </div>
                         <!-- Поле содержание -->
                         <div class="form-group">
                             <label for="inputProjectLeader">Содержание</label>
-                            <textarea id="inputDescription" name="content" class="form-control" rows="4" required></textarea>
+                            <textarea id="inputContent" name="content" class="form-control" rows="4" required></textarea>
                         </div>
                         <!-- Кнопка добавить -->
                         <div class="col-12">

@@ -34,10 +34,30 @@
         line-height: 49px;
         color: #FFFFFF;
 
-        &::before{
-            content: '• ';
-            color: #FFFF;
-            font-size: 50px;
+        ~ p {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 49px;
+            color: #FFFFFF;
+
+        }
+
+        ~ ul {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 49px;
+            color: #FFFFFF;
+
+            >li{
+                &:before{
+                    content: "• ";
+                    color: #FFFFFF;
+                }
+            }
         }
     }
 }
