@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin_layout')
+@extends('layouts.admin_layout')
 
 @section('title', 'Изменение курса')
 
@@ -101,10 +101,11 @@
                                 <label for="exampleInputFile">Фото</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input value="{{ $course['img']}}" type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" required>
                                         <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
+                                        <input value="{!! $course['img'] !!}" type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="loadFile(event)" required>
                                     </div>
                                 </div>
+                                <img id="output" style="width: 300px">
                             </div>
                             <!-- Поле подзаголовок -->
                             <div class="form-group">
@@ -131,4 +132,11 @@
             </div>
         </div>
     </section>
+
+    <script>
+        let loadFile = function (event){
+            let output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 @endsection

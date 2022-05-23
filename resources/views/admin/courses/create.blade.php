@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin_layout')
+@extends('layouts.admin_layout')
 
 @section('title', 'Добавление курса')
 
@@ -75,7 +75,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
-                <form action="{{ route('courses.store') }}" method="POST">
+                <form action="{{ route('courses.store') }}" accept-charset="UTF-8" method="POST">
                     @csrf
 
                     <!-- Заголовок -->
@@ -100,10 +100,11 @@
                             <label for="exampleInputFile">Фото</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" required>
+                                    <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="loadFile(event)" required>
                                     <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                                 </div>
                             </div>
+                            <img id="output" style="width: 300px">
                         </div>
                         <!-- Поле подзаголовок -->
                         <div class="form-group">
@@ -130,4 +131,11 @@
         </div>
     </div>
 </section>
+
+    <script>
+        let loadFile = function (event){
+            let output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 @endsection
