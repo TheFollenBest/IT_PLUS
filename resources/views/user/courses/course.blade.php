@@ -1,7 +1,7 @@
 @extends('layouts.user_layout')
 
 @section('title')
-{{$course->name}}
+Курс - {{$course->name}}
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <div class="preview-course__wrp-inner">
                 <h2 class="preview-course__title">{{$course->name}}</h2>
                 <p class="preview-course__text">{{$course->description}}</p>
-                <a href="{{ route('lesson') }}" class="preview-course__btn">Начать учиться</a>
+                <a href="{{ route('user_lessons.index', $course) }}" class="preview-course__btn">Начать учиться</a>
             </div>
             <img class="preview-course__img" src="/img/{{$course->img}}" alt="html-course">
         </div>

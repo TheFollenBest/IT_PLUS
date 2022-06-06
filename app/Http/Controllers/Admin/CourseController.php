@@ -29,7 +29,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('admin.courses.create');
+        $course = Course::get();
+        return view('admin.courses.create', [
+            'course' => $course]);
     }
 
     /**
@@ -47,6 +49,9 @@ class CourseController extends Controller
         $new_course -> subtitle = $request->input('subtitle');
         $new_course -> subtitle_text = $request->input('subtitle_text');
         $new_course -> content = $request->input('content');
+        $new_course -> card_color = $request->input('card_color');
+        $new_course -> font_color = $request->input('font_color');
+        $new_course -> card_img = $request->input('card_img');
         $new_course -> save();
 
         return redirect()->back()->withSuccess('Добавление прошло успешно!');
@@ -91,6 +96,9 @@ class CourseController extends Controller
         $course -> subtitle = $request->subtitle;
         $course -> subtitle_text = $request->subtitle_text;
         $course -> content = $request->content_course;
+        $course -> card_color = $request->card_color;
+        $course -> font_color = $request->font_color;
+        $course -> card_img = $request->card_img;
         $course -> save();
 
         return redirect()->back()->withSuccess('Изменение прошло успешно!');

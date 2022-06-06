@@ -15,8 +15,8 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lesson = Lesson::find(5);
-        return view('user.lessons.lesson', ['lesson' => $lesson]);
+        $lessons = Lesson::orderBy('id')->get();
+        return view('user.lessons.index', ['lessons' => $lessons]);
     }
 
     /**

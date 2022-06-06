@@ -102,7 +102,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
-                                        <input value="{!! $course['img'] !!}" type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="loadFile(event)" required>
+                                        <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="loadFile(event)" required>
                                     </div>
                                 </div>
                                 <img id="output" style="width: 300px">
@@ -110,7 +110,7 @@
                             <!-- Поле подзаголовок -->
                             <div class="form-group">
                                 <label for="inputClientCompany">Подзаголовок</label>
-                                <input value="{{ $course['subtitle']}}" type="text" name="subtitle" id="inputSubtitle" class="form-control" required>
+                                <input value="{{ $course['subtitle'] }}" type="text" name="subtitle" id="inputSubtitle" class="form-control" required>
                             </div>
                             <!-- Поле текст подзаголовка -->
                             <div class="form-group">
@@ -121,6 +121,26 @@
                             <div class="form-group">
                                 <label for="inputProjectLeader">Содержание</label>
                                 <textarea id="inputContent" name="content_course" class="form-control" rows="4" required>{{ $course['content'] }}</textarea>
+                            </div>
+                            <!-- Поле выбор цвета карточки-->
+                            <div class="form-group">
+                                <label for="inputClientCompany">Цвет карточки курса <span style="color:grey">(необязательно)</span></label>
+                                <input style="max-width: 100px; height: 100px" type="color" value="{{ $course['card_color'] }}" name="card_color" id="inputCardColor" class="form-control" required>
+                            </div>
+                            <!-- Поле выбор цвета -->
+                            <div class="form-group">
+                                <label for="inputClientCompany">Цвет текста курса <span style="color:grey">(необязательно)</span></label>
+                                <input style="max-width: 100px; height: 100px" type="color" value="{{ $course['font_color'] }}" name="font_color" id="inputFontColor" class="form-control" required>
+                            </div>
+                            <!-- Поле выбор фото карточки -->
+                            <div class="form-group">
+                                <label for="exampleInputFile">Фото</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="card_img">Выберите файл</label>
+                                        <input type="file" name="card_img" class="custom-file-input" id="card_img" accept="image/*" onchange="loadFile(event)" required>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Кнопка изменить -->
                             <div class="col-12">

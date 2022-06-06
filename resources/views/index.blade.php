@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
+    <link rel="icon" href="/img/logo.ico">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -108,7 +109,7 @@
         <!-- KNOWLEDGE -->
         <section class="knowledge container">
             <h2 class="knowledge__title">Актуальные знания для новичков и практикующих специалистов</h2>
-            <p class="knowledge__text">На платформе можно получить знания по актуальным темам и востребованные навыки. Все курсы нацелены на практику.</p>
+            <p class="knowledge__text">На платформе можно получить знания по актуальным темам и востребованные навыки. Большинство курсов нацелены на&nbsp;практику.</p>
         </section>
         <!-- KNOWLEDGE END -->
 
@@ -136,8 +137,8 @@
                         </defs>
                     </svg>
 
-                    <p class="cards-item__title cards-item__title--white">Начальный HTML</p>
-                    <a href="/courses/{{ $course->id = 1 }}" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <p class="cards-item__title cards-item__title--white">Базовый HTML</p>
+                    <a href="/user_courses/{{ $course->id = 1 }}" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--peach cards-item">
@@ -151,8 +152,8 @@
                         <path d="M84.3742 87.4998C82.6492 87.4998 81.2492 88.8999 81.2492 90.6249C81.2492 92.3499 79.8429 93.7499 78.1241 93.7499H71.8742C70.1554 93.7499 68.7492 92.3499 68.7492 90.6249V78.1249C68.7492 76.3999 70.1554 74.9998 71.8742 74.9998H78.1241C79.8429 74.9998 81.2492 76.3999 81.2492 78.1249C81.2492 79.8499 82.6492 81.25 84.3742 81.25C86.0992 81.25 87.4993 79.8499 87.4993 78.1249C87.4993 72.9561 83.2932 68.75 78.1244 68.75H71.8745C66.7057 68.75 62.4996 72.9561 62.4996 78.1249V90.6249C62.4996 95.7937 66.7057 99.9998 71.8745 99.9998H78.1244C83.2932 99.9998 87.4993 95.7937 87.4993 90.6249C87.4993 88.8999 86.0992 87.4998 84.3742 87.4998Z" fill="black" />
                     </svg>
 
-                    <p class="cards-item__title cards-item__title--black">Начальный CSS</p>
-                    <a href="/courses/{{ $course->id = 2 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <p class="cards-item__title cards-item__title--black">Базовый CSS</p>
+                    <a href="/user_courses/{{ $course->id = 2 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--green cards-item">
@@ -172,8 +173,8 @@
                         </defs>
                     </svg>
 
-                    <p class="cards-item__title cards-item__title--black">Начальный JS</p>
-                    <a href="/courses/{{ $course->id = 3 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
+                    <p class="cards-item__title cards-item__title--black">Базовый JS</p>
+                    <a href="/user_courses/{{ $course->id = 3 }}" class="cards-item__link cards-item__link--black">Подробнее</a>
                 </li>
 
                 <li class="cards__item cards__item--black cards-item">
@@ -183,7 +184,7 @@
                     </svg>
 
                     <p class="cards-item__title cards-item__title--white">Другие курсы</p>
-                    <a href="" class="cards-item__link cards-item__link--white">Подробнее</a>
+                    <a href="{{ route('user_courses.index') }}" class="cards-item__link cards-item__link--white">Подробнее</a>
                 </li>
 
             </ul>

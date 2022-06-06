@@ -5,8 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Курс - @yield('title')</title>
+    <title>@yield('title')</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/style.css">
 
     <script src="/codemirror/lib/codemirror.js"></script>
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="/codemirror/theme/dracula.css">
     <script src="/codemirror/addon/edit/closetag.js"></script>
+
+    @stack('style')
 </head>
 
 <body>
@@ -143,6 +146,7 @@
     </div>
 </footer>
 <!-- FOOTER END -->
+@stack('script')
 <script src="js/accordion.js"></script>
 </body>
 

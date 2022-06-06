@@ -42,7 +42,6 @@
                                 <td>{{$course['id']}}</td>
                                 <td>{{$course['name']}}</td>
                                 <td>{{ Str::limit($course['description'], $limit = 50, $end = '') }}...</td>
-{{--                                <td>{{$course['created_at']}}</td>--}}
                                 <td>{{ Str::limit($course['created_at'], $limit = 10, $end = '') }}
                                 </td>
                                 <td>{{ Str::limit($course['updated_at'], $limit = 10, $end = '') }}
@@ -54,27 +53,11 @@
                                     </a>
                                     <form action="{{ route('courses.destroy', $course['id']) }}" class="d-inline" method="POST">
                                         @csrf
-                                        @method('PUT')
+                                        @method('DELETE')
                                         <button class="btn btn-danger btn-sm" title="Удалить" type="submit">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
-
-{{--                                    <!-- Кнопка блокировки -->--}}
-{{--                                    <form class="d-inline" action="{{ route('courses.block', $course['id']) }}" method="POST">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('PUT')--}}
-
-{{--                                        @if ($course->is_hidden(false))--}}
-{{--                                            <button class="btn btn-warning btn-sm" title="Заблокировать пользователя" href="#">--}}
-{{--                                                <i class="fas fa-ban"></i>--}}
-{{--                                            </button>--}}
-{{--                                        @else--}}
-{{--                                            <button class="btn btn-success btn-sm" title="Разблокировать пользователя" href="#">--}}
-{{--                                                <i class="fas fa-check"></i>--}}
-{{--                                            </button>--}}
-{{--                                        @endif--}}
-{{--                                    </form>--}}
                                 </td>
                             </tr>
 

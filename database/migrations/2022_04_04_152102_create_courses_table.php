@@ -22,6 +22,9 @@ return new class extends Migration
             $table->text('subtitle_text')->nullable();
             $table->text('content');
             $table->boolean('is_hidden')->default('false');
+            $table->string('card_color')->nullable();
+            $table->string('font_color')->nullable();
+            $table->string('card_img')->nullable();
             $table->timestamps();
         });
     }

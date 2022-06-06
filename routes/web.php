@@ -6,24 +6,19 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-//Route::get('/course', function () {
-//    return view('user/course');
-//})->name('course');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/courses/{id}', [App\Http\Controllers\User\CourseController::class, 'show'])->name('courses.show');
-//Route::get('/courses/{id?}?id_lesson=1', function ($id = null, $id_lesson = null) {
+//Route::resource('user_courses', App\Http\Controllers\User\CourseController::class);
+
+//Route::get('/courses', [App\Http\Controllers\User\CourseController::class, 'index'])->name('user_courses.index');
 //
-////    print_r($_GET);
-////    return([$_GET['id_lesson']]);
-//    return view('user.lessons.lesson');
-//})->name('lesson2');
+//Route::get('/courses/{id}', [App\Http\Controllers\User\CourseController::class, 'show'])->name('user_courses.show');
 
-Route::get('/', [App\Http\Controllers\User\CourseController::class, 'index'])->name('index');
+//Route::get('/courses/{id}/lessons/{id_lesson}', [App\Http\Controllers\User\LessonController::class, 'show'])->name('user_lessons.show');
 
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])->name('index');
 
 Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
@@ -33,11 +28,16 @@ Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
 });
 
 Route::middleware(['role:user|admin'])->group(function () {
-//    Route::get('/lesson', function () {
-//        return view('user.lessons.lesson');
-//    })->name('lesson');
 
-    Route::resource('lesson', App\Http\Controllers\User\LessonController::class);
+    Route::resource('user_courses', App\Http\Controllers\User\CourseController::class);
+    Route::resource('user_lessons', App\Http\Controllers\User\LessonController::class);
+    Route::resource('user_courses/{user_course}/user_lessons', App\Http\Controllers\User\CourseLessonController::class);
 
-//    Route::resource('courses', App\Http\Controllers\User\CourseController::class);
+//    Route::get('/courses/{course}/lessons', [App\Http\Controllers\User\CourseLessonController::class, 'index'])->name('user_lessons.index');
+//    Route::get('/courses/{course}/lessons/{lesson}', [App\Http\Controllers\User\CourseLessonController::class, 'index'])->name('user_lessons.index');
+
+//    Route::resource('courses.lessons', App\Http\Controllers\User\CourseLessonController::class);
+
+//    Route::redirect('/courses/{id}', '/lessons');
+
 });

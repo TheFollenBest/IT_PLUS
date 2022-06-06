@@ -121,6 +121,26 @@
                             <label for="inputProjectLeader">Содержание</label>
                             <textarea id="inputContent" name="content" class="form-control" rows="4" required></textarea>
                         </div>
+                        <!-- Поле выбор цвета карточки-->
+                        <div class="form-group">
+                            <label for="inputClientCompany">Цвет карточки курса <span style="color:grey">(необязательно)</span></label>
+                            <input style="max-width: 100px; height: 100px" type="color" name="card_color" id="inputCardColor" class="form-control" required>
+                        </div>
+                        <!-- Поле выбор цвета -->
+                        <div class="form-group">
+                            <label for="inputClientCompany">Цвет текста курса <span style="color:grey">(необязательно)</span></label>
+                            <input style="max-width: 100px; height: 100px" type="color" name="font_color" id="inputFontColor" class="form-control" required>
+                        </div>
+                        <!-- Поле выбор фото карточки -->
+                        <div class="form-group">
+                            <label for="exampleInputFile">Фото</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <label class="custom-file-label" for="card_img">Выберите файл</label>
+                                    <input type="file" name="card_img" class="custom-file-input" id="card_img" accept="image/*" onchange="loadFile(event)" required>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Кнопка добавить -->
                         <div class="col-12">
                             <input type="submit" value="Добавить" class="btn btn-success float-right" required>

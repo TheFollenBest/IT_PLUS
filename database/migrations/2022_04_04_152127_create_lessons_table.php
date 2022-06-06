@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('text');
-            $table->text('code');
+            $table->text('code')->nullable();
             $table->text('manual')->nullable();
             $table->foreignId('id_course')->constrained('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
