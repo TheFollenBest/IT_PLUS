@@ -12,4 +12,8 @@ class Lesson extends Model
     public function courses(){
         return $this-> belongsTo(Course::class, 'id_course');
     }
+
+    public function user(){
+        return $this-> belongsToMany(User::class, 'user_lessons', 'id_lesson', 'id_user')->withPivot('user_answer', 'id_status');
+    }
 }

@@ -36,7 +36,10 @@
                     </svg>
                     <p class="cards-item__title cards-item__title--white">{{ $lesson->name }}</p>
 {{--                    <a href="{{ route('user_lessons.show', $lesson['id']) }}" class="cards-item__link cards-item__link--white">Подробнее</a>--}}
+
+                    <a class="" href="{{ route('user_lessons.edit', [$course, $lesson]) }}">Начать</a>
                 </li>
+
             @endforeach
         </ul>
     </section>

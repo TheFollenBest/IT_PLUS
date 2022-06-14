@@ -32,6 +32,9 @@ Route::middleware(['role:user|admin'])->group(function () {
     Route::resource('user_courses', App\Http\Controllers\User\CourseController::class);
     Route::resource('user_lessons', App\Http\Controllers\User\LessonController::class);
     Route::resource('user_courses/{user_course}/user_lessons', App\Http\Controllers\User\CourseLessonController::class);
+    Route::get('/test', function () {
+        return view('user.lessons.lesson');
+    });
 
 //    Route::get('/courses/{course}/lessons', [App\Http\Controllers\User\CourseLessonController::class, 'index'])->name('user_lessons.index');
 //    Route::get('/courses/{course}/lessons/{lesson}', [App\Http\Controllers\User\CourseLessonController::class, 'index'])->name('user_lessons.index');
