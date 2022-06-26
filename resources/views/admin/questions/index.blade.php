@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Список курсов')
+@section('title', 'Список вопросов')
 
 @section('content')
     <!-- Сообщение при успешном добавлении -->
@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Список курсов</h3>
+                        <h3 class="card-title">Список вопросов</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -23,30 +23,46 @@
                             <thead>
                             <tr>
                                 <th style="width:3%">ID</th>
-                                <th>Наименование</th>
-                                <th>Описание</th>
+                                <th>Курс</th>
+                                <th>Вопросы</th>
                                 <th>Дата создания</th>
                                 <th>Дата изменения</th>
                                 <th style="width:20%"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($courses as $course)
+
+{{--                            @foreach($courses as $course)--}}
+
+{{--                                <tr>--}}
+{{--                                    <td rowspan={{$a + 1}}>{{$course['id']}}</td>--}}
+{{--                                    <td rowspan={{$a + 1}}>{{$course['name']}}</td>--}}
+{{--                                </tr>--}}
+
+{{--                                @foreach($questions as $question)--}}
+{{--                                <tr>--}}
+{{--                                    <td rowspan={{$a + 1}}>{{$question['name']}}</td>--}}
+{{--                                </tr>--}}
+{{--                                @endforeach--}}
+
+{{--                            @endforeach--}}
+
+                            @foreach($questions as $question)
 
                             <tr>
-                                <td>{{$course['id']}}</td>
-                                <td>{{$course['name']}}</td>
-                                <td>{{ Str::limit($course['description'], $limit = 50, $end = '') }}...</td>
-                                <td>{{ Str::limit($course['created_at'], $limit = 10, $end = '') }}
+                                <td>{{$question['id']}}</td>
+                                <td>{{ $question->courses()->pluck('name')->implode('name', ' ') }}</td>
+                                <td>{{$question['name']}}</td>
+                                <td>{{ Str::limit($question['created_at'], $limit = 10, $end = '') }}
                                 </td>
-                                <td>{{ Str::limit($course['updated_at'], $limit = 10, $end = '') }}
+                                <td>{{ Str::limit($question['updated_at'], $limit = 10, $end = '') }}
                                 </td>
 
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-success btn-sm" title="Редактировать" href="{{ route('courses.edit', $course['id']) }}">
+                                    <a class="btn btn-success btn-sm" title="Редактировать" href="{{ route('questions.edit', $question['id']) }}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <form action="{{ route('courses.destroy', $course['id']) }}" class="d-inline" method="POST">
+                                    <form action="{{ route('questions.destroy', $question['id']) }}" class="d-inline" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm" title="Удалить" type="submit">

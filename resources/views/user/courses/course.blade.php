@@ -40,23 +40,17 @@
     <section class="faq container">
         <h2 class="faq__title">Часто задаваемые вопросы</h2>
         <div class="faq__wrp">
-            <button class="faq__btn">У меня нет опыта в веб-разработке. Подходит ли мне этот курс?</button>
-            <div class="faq__inner">
-                <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-
-            <button class="faq__btn">Это бесплатно?</button>
-            <div class="faq__inner">
-                <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-
-            <button class="faq__btn">У меня нет опыта в веб-разработке. Подходит ли мне этот курс?</button>
-            <div class="faq__inner">
-                <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
+            @foreach($questions as $question)
+                <button class="faq__btn">{{$question->name}}</button>
+                <div class="faq__inner">
+                    <p class="faq__text">{{$question->text}}</p>
+                </div>
+            @endforeach
         </div>
     </section>
     <!-- FAQ END -->
+
+    <script src="/js/accordion.js"></script>
 
 @endsection
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{{--    <meta charset="utf-8">--}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Админ-панель - @yield('title')</title>
     <link rel="icon" href="/img/logo.ico">
@@ -27,6 +27,8 @@
     <!-- codemirror -->
     <script src="/codemirror/lib/codemirror.js"></script>
     <script src="/codemirror/mode/xml/xml.js"></script>
+    <script src="/codemirror/mode/css/css.js"></script>
+    <script src="/codemirror/mode/javascript/javascript.js"></script>
     <script src="/codemirror/addon/edit/closetag.js"></script>
     <script src="/codemirror/addon/edit/closebrackets.js"></script>
     <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
@@ -79,6 +81,20 @@
                             <a href="{{ route('courses.create') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-plus"></i>
                                 <p>Добавление курса</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('questions.index') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-question"></i>
+                                <p>Список вопросов</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('questions.create') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-plus"></i>
+                                <p>Добавление вопроса</p>
                             </a>
                         </li>
 

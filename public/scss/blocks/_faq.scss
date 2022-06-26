@@ -20,13 +20,17 @@
     &__btn {
         max-width: 648px;
         border-top: 3px solid black;
-        border-bottom: 3px solid black;
+        border-bottom: none;
         border-left: none;
         border-right: none;
         outline: none;
         width: 100%;
         background-color: white;
         padding: 40px 0;
+
+        &:last-of-type {
+            border-bottom: 3px solid black;
+        }
 
         font-family: 'Montserrat';
         font-style: normal;
@@ -39,15 +43,19 @@
     &__inner {
         font-family: 'Montserrat';
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 18px;
         line-height: 16px;
 
-        padding: 20px 0;
+        padding: 20px;
         display: none;
         background-color: black;
         overflow: hidden;
         color: white;
+
+        border-radius: 0 0 15px 15px;
+
+        margin-bottom: 10px;
     }
 
     &__text {}

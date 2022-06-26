@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
@@ -32,24 +31,15 @@
             <ul class="header__nav-list nav-list">
 
                 <li class="header__nav-item nav-item">
-                    <a href="#" class="nav-item__link">Курсы</a>
-                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <a href="{{ route('user_courses.index') }}" class="nav-item__link">Курсы</a>
                 </li>
 
                 <li class="header__nav-item nav-item">
-                    <a href="#" class="nav-item__link">Программы</a>
-                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <a href="{{ route('index') }}#audience" class="nav-item__link">Для кого?</a>
                 </li>
 
                 <li class="header__nav-item nav-item">
-                    <a href="#" class="nav-item__link">О нас</a>
-                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <a href="{{ route('about') }}" class="nav-item__link">О нас</a>
                 </li>
             </ul>
         </nav>
@@ -70,15 +60,16 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" style="padding-top: 15px" aria-labelledby="navbarDropdown">
+
                     @if (Auth::user()->hasRole('admin'))
                         <a class="dropdown-item" href="{{ route('homeAdmin') }}">Админ-панель</a>
                     @endif
+                    <a class="dropdown-item" href="{{ route('profile.index') }}">Профиль</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         {{ __('Выход') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -101,15 +92,15 @@
             <ul class="footer__nav-list footer-nav-list">
 
                 <li class="footer__nav-item footer-nav-item">
-                    <a href="#" class="footer-nav-item__link">Курсы</a>
+                    <a href="{{ route('user_courses.index') }}" class="footer-nav-item__link">Курсы</a>
                 </li>
 
                 <li class="footer__nav-item footer-nav-item">
-                    <a href="#" class="footer-nav-item__link">Программы</a>
+                    <a href="{{ route('index') }}#audience" class="footer-nav-item__link">Для кого?</a>
                 </li>
 
                 <li class="footer__nav-item footer-nav-item">
-                    <a href="#" class="footer-nav-item__link">О нас</a>
+                    <a href="{{ route('about') }}" class="footer-nav-item__link">О нас</a>
                 </li>
             </ul>
         </nav>

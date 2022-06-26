@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Lesson;
 use App\Models\User_lessons;
 use Illuminate\Http\Request;
@@ -67,8 +68,28 @@ class CourseLessonController extends Controller
      */
     public function edit(User_lessons $user_lessons, $courseLesson, $course)
     {
-        $lesson = Lesson::where('id_course', $courseLesson)->where('id', $course)->orderBy('id')->get();
-        return view('user.lessons.edit', compact('course', 'courseLesson'), ['lesson' => $lesson]);
+        $userAnswer = User_lessons::where('id_lesson', $course)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->take(1)->get(); // Вывод ответа пользователя
+        $countUserAnswer = User_lessons::where('id_lesson', $course)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->count(); // Счетчик кол-ва ответов на урок
+        $lesson = Lesson::where('id_course', $courseLesson)->where('id', $course)->orderBy('id')->get(); // Вывод урока
+
+        return view('user.lessons.edit', compact('course', 'courseLesson'), ['lesson' => $lesson, 'userAnswer' => $userAnswer, 'countUserAnswer' => $countUserAnswer]);
+
+//        $userAnswer = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->take(1)->get();
+//        $countUserAnswer = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->count();
+//
+//
+//        if ($countUserAnswer == 0) {
+//            $lessonCode = Lesson::where('id_course', $courseLesson)->where('id', $course)->orderBy('id')->get('code');
+//        }
+//        else {
+//            $lessonCode = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->take(1)->get('user_answer');;
+//        }
+//        //dd($lessonCode);
+//
+//        $lesson = Lesson::where('id_course', $courseLesson)->where('id', $course)->orderBy('id')->get();
+//        return view('user.lessons.edit', compact('course', 'courseLesson'), ['lesson' => $lesson, 'lessonCode' => $lessonCode]);
+
+
     }
 
     /**
@@ -80,17 +101,17 @@ class CourseLessonController extends Controller
      */
     public function update(Request $request, User_lessons $user_lessons, $course,  $courseLesson)
     {
-        //
-//        $params = $request->all();
-//        $user_lessons->update($params);
 
-        $user_lesson_count = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->count();
+        $countUserAnswer = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->count(); // Счетчик кол-ва ответов на урок
+        $answers = Answer::where('id_lesson', $courseLesson)->get(); // Вывод ответа на урок
 
-        if ($user_lesson_count != 0){
+        if ($countUserAnswer != 0){
 
-            $idUserLesson = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->take(1)->delete();
+            $userAnswer = User_lessons::where('id_lesson', $courseLesson)->where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->take(1)->delete();
 
-            $user_lessons -> user_answer = $request->input('editor_html');
+            $user_lessons -> user_answer_html = $request->input('editor_html');
+            $user_lessons -> user_answer_css = $request->input('editor_css');
+            $user_lessons -> user_answer_js = $request->input('editor_js');
             $user_lessons -> id_user = Auth::user()->id;
             $user_lessons -> id_lesson = $courseLesson;
 
@@ -98,18 +119,72 @@ class CourseLessonController extends Controller
             // dd( $idUserLesson);
             $user_lessons -> save();
 
-            return redirect()->back()->withSuccess('Изменение прошло успешно!');
+            $successAnswer = 0;
+
+            foreach ( $answers as $answer){
+                $test = array("/\s+/");
+                $trimmedUserAnswerHtml = preg_replace($test, "",$user_lessons -> user_answer_html);
+                $trimmedUserAnswerCss = preg_replace($test, "",$user_lessons -> user_answer_css);
+                $trimmedUserAnswerJs = preg_replace($test, "",$user_lessons -> user_answer_js);
+                $trimmedLessonAnswerHtml = preg_replace($test, "",$answer->answer_code_html);
+                $trimmedLessonAnswerCss = preg_replace($test, "",$answer->answer_code_css);
+                $trimmedLessonAnswerJs = preg_replace($test, "",$answer->answer_code_js);
+//                dd($trimmedUserAnswer, $trimmedLessonAnswer);
+                if ($trimmedUserAnswerHtml === $trimmedLessonAnswerHtml && $trimmedUserAnswerCss === $trimmedLessonAnswerCss && $trimmedUserAnswerJs === $trimmedLessonAnswerJs) {
+                    $successAnswer = $successAnswer + 1;
+                }
+            }
+
+            if ($successAnswer === 0) {
+                $user_lessons -> id_status = 1;
+                $user_lessons -> save();
+                return redirect()->back()->withSuccess('Попробуй еще раз :)');
+            }
+            else {
+                $user_lessons -> id_status = 2;
+                $user_lessons -> save();
+                return redirect()->back()->withSuccess('Молодец, все правильно!');
+            }
+
         }
         else{
 
-            $user_lessons -> user_answer = $request->input('editor_html');
+            $user_lessons -> user_answer_html = $request->input('editor_html');
+            $user_lessons -> user_answer_css = $request->input('editor_css');
+            $user_lessons -> user_answer_js = $request->input('editor_js');
             $user_lessons -> id_user = Auth::user()->id;
             $user_lessons -> id_lesson = $courseLesson;
 
-            // dd( $courseLesson,Auth::user()->id,  $request->input('editor_html'));
+//             dd( $courseLesson,Auth::user()->id,  $request->input('editor_html'));
             $user_lessons -> save();
 
-           return redirect()->back()->withSuccess('Изменение прошло успешно!');
+            $successAnswer = 0;
+
+            foreach ( $answers as $answer){
+                $test = array("/\s+/");
+                $trimmedUserAnswerHtml = preg_replace($test, "",$user_lessons -> user_answer_html);
+                $trimmedUserAnswerCss = preg_replace($test, "",$user_lessons -> user_answer_css);
+                $trimmedUserAnswerJs = preg_replace($test, "",$user_lessons -> user_answer_js);
+                $trimmedLessonAnswerHtml = preg_replace($test, "",$answer->answer_code_html);
+                $trimmedLessonAnswerCss = preg_replace($test, "",$answer->answer_code_css);
+                $trimmedLessonAnswerJs = preg_replace($test, "",$answer->answer_code_js);
+//                dd($trimmedUserAnswer, $trimmedLessonAnswer);
+                if ($trimmedUserAnswerHtml === $trimmedLessonAnswerHtml && $trimmedUserAnswerCss === $trimmedLessonAnswerCss && $trimmedUserAnswerJs === $trimmedLessonAnswerJs) {
+                    $successAnswer = $successAnswer + 1;
+                }
+
+            }
+
+            if ($successAnswer === 0) {
+                $user_lessons -> id_status = 1;
+                $user_lessons -> save();
+                return redirect()->back()->withSuccess('Попробуй еще раз :)');
+            }
+            else {
+                $user_lessons -> id_status = 2;
+                $user_lessons -> save();
+                return redirect()->back()->withSuccess('Молодец, все правильно!');
+            }
         }
 
 //        if ($user_lesson_count == 0){

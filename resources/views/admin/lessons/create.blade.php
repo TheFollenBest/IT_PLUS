@@ -93,15 +93,42 @@
                                 <label for="inputDescription">Текст задания</label>
                                 <textarea id="inputDescription" name="text" class="form-control" rows="4" required></textarea>
                             </div>
-                            <!-- Поле код -->
+                            <!-- Поле код HTML -->
                             <div class="form-group">
-                                <label for="editor">Код <span style="color:grey">(необязательно)</span></label>
-                                <textarea id="editor" name="code" class="form-control" rows="4"></textarea>
+                                <label for="editor">Код HTML <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="editor_html" name="code_html" class="form-control" rows="4"></textarea>
+
+                                <label for="editor_html_answer">Код HTML <span style="color:grey">(ответ)</span></label>
+                                <textarea id="editor_html_answer" name="answer_code_html" class="form-control" rows="4"></textarea>
+                            </div>
+                            <!-- Поле код CSS -->
+                            <div class="form-group">
+                                <label for="editor">Код CSS <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="editor_css" name="code_css" class="form-control" rows="4"></textarea>
+
+                                <label for="editor_css_answer">Код CSS <span style="color:grey">(ответ)</span></label>
+                                <textarea id="editor_css_answer" name="answer_code_css" class="form-control" rows="4"></textarea>
+                            </div>
+                            <!-- Поле код JS -->
+                            <div class="form-group">
+                                <label for="editor">Код JS <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="editor_js" name="code_js" class="form-control" rows="4"></textarea>
+
+                                <label for="editor_js_answer">Код JS <span style="color:grey">(ответ)</span></label>
+                                <textarea id="editor_js_answer" name="answer_code_js" class="form-control" rows="4"></textarea>
+                            </div>
+                            <!-- Поле другой код -->
+                            <div class="form-group">
+                                <label for="editor">Другой код <span style="color:grey">(необязательно)</span></label>
+                                <textarea id="editor_other" name="code_other" class="form-control" rows="4"></textarea>
+
+                                <label for="editor_other_answer">Другой код <span style="color:grey">(ответ)</span></label>
+                                <textarea id="editor_other_answer" name="answer_code_other" class="form-control" rows="4"></textarea>
                             </div>
                             <!-- Поле методичка -->
                             <div class="form-group">
                                 <label for="inputProjectLeader">Методический материал  <span style="color:grey">(необязательно)</span></label>
-                                <textarea id="inputDescription" name="manual" class="form-control" rows="4"></textarea>
+                                <textarea id="inputManual" name="manual" class="form-control" rows="4"></textarea>
                             </div>
                             <!-- Поле выбор курса -->
                             <div class="form-group">
@@ -124,12 +151,72 @@
     </section>
 
     <script>
-        let editor = CodeMirror.fromTextArea
-        (document.getElementById('editor'), {
+        let editor_html = CodeMirror.fromTextArea
+        (document.getElementById('editor_html'), {
             mode: "xml",
             theme: "dracula",
             lineNumbers: "true",
             autoCloseTags: "true"
         });
+
+        let editor_html_answer = CodeMirror.fromTextArea
+        (document.getElementById('editor_html_answer'), {
+            mode: "xml",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+
+        let editor_css = CodeMirror.fromTextArea
+        (document.getElementById('editor_css'), {
+            mode: "css",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+        let editor_css_answer = CodeMirror.fromTextArea
+        (document.getElementById('editor_css_answer'), {
+            mode: "xml",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+
+        let editor_js = CodeMirror.fromTextArea
+        (document.getElementById('editor_js'), {
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+        let editor_js_answer = CodeMirror.fromTextArea
+        (document.getElementById('editor_js_answer'), {
+            mode: "xml",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+
+        let editor_other = CodeMirror.fromTextArea
+        (document.getElementById('editor_other'), {
+            mode: "",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
+        let editor_other_answer = CodeMirror.fromTextArea
+        (document.getElementById('editor_other_answer'), {
+            mode: "xml",
+            theme: "dracula",
+            lineNumbers: "true",
+            autoCloseTags: "true"
+        });
+
     </script>
 @endsection

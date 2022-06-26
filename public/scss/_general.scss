@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth !important;
+}
+
 body {
     border: 15px solid #4E5AFF;
     font-family: 'Montserrat', 'Bebas Neue Cyrillic', 'Bebas Neue', sans-serif;

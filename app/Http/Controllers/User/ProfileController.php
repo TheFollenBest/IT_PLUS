@@ -4,11 +4,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\Course_questions;
-use App\Models\Question;
+use App\Models\Lesson;
+use App\Models\User;
+use App\Models\User_lessons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CourseController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +19,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('id')->get();
-        return view('user.courses.index', ['courses' => $courses]);
+        $lessons = Lesson::get();
+        $courses = Course::get();
+
+        $users = User::get();
+
+        $userAnswer = User_lessons::get();
+
+        return view('user.profile', ['users' => $users , 'userAnswer' => $userAnswer, 'courses' => $courses, 'lessons' => $lessons]);
     }
 
     /**
@@ -45,24 +53,21 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $course = Course::find($id);
-        $course_questions = Course_questions::get();
-        $questions = Question::whereHas('courses', function($q) use ($id) {$q->where('id_course', $id);})->get();
-        return view('user.courses.course', compact('course', 'questions'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(User $user)
     {
         //
     }
@@ -71,10 +76,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -82,10 +87,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(User $user)
     {
         //
     }

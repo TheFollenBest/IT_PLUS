@@ -23,24 +23,15 @@
                 <ul class="header__nav-list nav-list">
 
                     <li class="header__nav-item nav-item">
-                        <a href="#" class="nav-item__link">Курсы</a>
-                        <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <a href="#cards" class="nav-item__link">Курсы</a>
                     </li>
 
                     <li class="header__nav-item nav-item">
-                        <a href="#" class="nav-item__link">Программы</a>
-                        <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <a href="#audience" class="nav-item__link">Для кого?</a>
                     </li>
 
                     <li class="header__nav-item nav-item">
-                        <a href="#" class="nav-item__link">О нас</a>
-                        <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L6.5 6.5L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <a href="{{ route('about') }}" class="nav-item__link">О нас</a>
                     </li>
                 </ul>
             </nav>
@@ -64,6 +55,7 @@
                             @if (Auth::user()->hasRole('admin'))
                                 <a class="dropdown-item" href="{{ route('homeAdmin') }}">Админ-панель</a>
                             @endif
+                                <a class="dropdown-item" href="{{ route('profile.index') }}">Профиль</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -97,8 +89,14 @@
                     <div class="container">
                         <p class="header__logo preview-wrp__right-logo">IT<span class="header__logo--plus">+</span>PLUS</p>
                         <p class="preview__title-right">Что это за сайт?</p>
-                        <p class="preview__text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do&nbsp;eiusmod tempor incididunt ut&nbsp;labore et&nbsp;dolore magna aliqua. Ut&nbsp;enim ad&nbsp;minim veniam, quis nostrud exercitation ullamco laboris nisi ut&nbsp;aliquip ex&nbsp;ea&nbsp;commodo consequat. Duis aute irure dolor in&nbsp;reprehenderit in&nbsp;voluptate velit esse cillum dolore eu&nbsp;fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in&nbsp;culpa qui officia deserunt mollit anim id&nbsp;est laborum.
+                        <p class="preview__text" style="line-height: 1.5">
+                            IT PLUS — это образовательная среда,
+                            в которой ваш процесс обучения основан на реальных ситуациях. Вы учитесь программированию и с первого урока пишете код.
+
+                            <p class="preview__text" style="margin-top: 10px; line-height: 1.5">Среда изначально спроектирована
+                            для онлайн-обучения — вам понадобится
+                            компьютер и спокойное место, где вас не будут
+                            отвлекать.</p>
                         </p>
                     </div>
                 </div>
@@ -115,7 +113,7 @@
 
         <!-- CARDS -->
         <section class="cards container">
-            <h2 class="cards__title">Наши курсы</h2>
+            <h2 class="cards__title" id="cards">Наши курсы</h2>
             <hr class="cards__border">
             <ul class="cards__list">
                 <li class="cards__item cards__item--blue cards-item">
@@ -193,7 +191,7 @@
 
         <!-- AUDIENCE -->
         <section class="audience container">
-            <h2 class="audience__title">Для кого это подходит?</h2>
+            <h2 class="audience__title" id="audience">Для кого это подходит?</h2>
             <hr class="audience__border">
             <ul class="audience__list">
                 <li class="audience__item audience-item">
@@ -205,7 +203,7 @@
                     </svg>
                     <div class="audience-item__wrp">
                         <p class="audience-item__title">Новичкам в&nbsp;разработке</p>
-                        <p class="audience-item__text">С&nbsp;нуля изучите основы программирования на&nbsp;JavaScript, PHP и&nbsp;др.</p>
+                        <p class="audience-item__text">С&nbsp;нуля изучите основы программирования и веб‑разработки.</p>
                     </div>
                 </li>
                 <li class="audience__item audience-item">
@@ -228,8 +226,8 @@
                         <path d="M9.52393 73.1254C9.52393 69.4 13.4518 66.983 16.7774 68.662L91.7606 106.52C96.8136 109.072 100 114.25 100 119.91V208.687C100 208.687 100.078 215.912 101.681 218.344C103.055 220.428 105.263 221.869 107.261 222.319C110.146 222.969 113.108 221.974 113.108 221.974L107.805 225.221C103.012 228.156 96.982 228.165 92.1804 225.246L16.7322 179.382C12.2563 176.661 9.52393 171.802 9.52393 166.564V73.1254Z" fill="#5218FF" />
                     </svg>
                     <div class="audience-item__wrp">
-                        <p class="audience-item__title">IT-специалистам</p>
-                        <p class="audience-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do&nbsp;eiusmod tempor incididunt.</p>
+                        <p class="audience-item__title">Будущим IT‑специалистам</p>
+                        <p class="audience-item__text">Курсы для каждого, кто хочет окунуться в&nbsp;мир вёрстки и&nbsp;программирования.</p>
                     </div>
                 </li>
             </ul>
@@ -256,6 +254,8 @@
                 </div>
             </div>
         </section>
+
+
         <!-- FAQ END -->
     </main>
 
@@ -269,15 +269,15 @@
                 <ul class="footer__nav-list footer-nav-list">
 
                     <li class="footer__nav-item footer-nav-item">
-                        <a href="#" class="footer-nav-item__link">Курсы</a>
+                        <a href="#cards" class="footer-nav-item__link">Курсы</a>
                     </li>
 
                     <li class="footer__nav-item footer-nav-item">
-                        <a href="#" class="footer-nav-item__link">Программы</a>
+                        <a href="#audience" class="footer-nav-item__link">Для кого?</a>
                     </li>
 
                     <li class="footer__nav-item footer-nav-item">
-                        <a href="#" class="footer-nav-item__link">О нас</a>
+                        <a href="{{ route('about') }}" class="footer-nav-item__link">О нас</a>
                     </li>
                 </ul>
             </nav>
