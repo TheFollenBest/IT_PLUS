@@ -31,6 +31,12 @@
 @method('PUT')
 <body id="bundle-trainer" class="utilityfocus" style="--profession-color:#007AFF; --darken-profession-color:rgba(0, 109, 229, 1); --initial-vh:9.29px;">
 
+<!-- Сообщение при успешном добавлении -->
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+        <h4><i class="icon fa fa-check"></i>{{ session('success') }}</h4>
+    </div>
+@endif
 <div id="mount">
     <div class="app">
         <div class="page trainer-page">
@@ -122,14 +128,9 @@
                                                     <div class="task-description">
                                                         <div class="scrollable-default scrollable scrollable_theme_light task-description__content prisma prisma_theme_light">
                                                             <div class="Markdown base-markdown base-markdown_with-gallery base-markdown markdown markdown_size_small markdown_type_theory theory-viewer__markdown task-description__markdown">
-                                                                <div class="paragraph">{{ $lesson[0]->text }}</div>
+                                                                <div class="paragraph"><textarea class="lesson_text" readonly>{{ $lesson[0]->text }}</textarea></div>
                                                             </div>
-                                                            <!-- Сообщение при успешном добавлении -->
-                                                            @if (session('success'))
-                                                                <div class="alert alert-success" role="alert">
-                                                                    <h4><i class="icon fa fa-check"></i>{{ session('success') }}</h4>
-                                                                </div>
-                                                            @endif
+
                                                         </div>
                                                     </div>
                                                     <section class="trainer-footer trainer-footer_type_web trainer__panel trainer__panel_at_bottom trainer-footer">
@@ -141,18 +142,6 @@
                                                                 <span>Теория</span>
                                                             </button>
                                                             <div class="trainer-footer__splitter"></div>
-                                                            <span class="element-hint trainer-footer__reset-code-button trainer-footer__button">
-                                                                    <span class="element-hint__wrapper">
-                                                                        <button onclick="res()" class="button button_size_m button_type_icon button_theme_light button_view_clear button_has-hover-color button_with-scaling-background" type="button" style="--button-hover-color:var(--profession-color, $pureBlue);">
-                                                                            <span class="button__text">
-                                                                                <svg class="icon icon-refresh" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                                    <path d="M12 5.75c0 .414-.338.745-.748.8a5.501 5.501 0 106.198 6.198c.055-.41.386-.748.8-.748.414 0 .754.337.71.749a7.001 7.001 0 11-7.709-7.71c.412-.043.749.297.749.711z" fill="currentColor"></path>
-                                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.267 5.2a1 1 0 010 1.6l-2.667 2A1 1 0 0111 8V4a1 1 0 011.6-.8l2.667 2z" fill="currentColor"></path>
-                                                                                </svg>
-                                                                            </span>
-                                                                        </button>
-                                                                    </span>
-                                                                </span>
                                                             <section class="trainer-footer__action-buttons trainer-footer__action-buttons_type_web">
                                                                 <button type="submit" class="button2 button2_flat button2_size_m button2_type_primary trainer-footer__check-button trainer-footer__action-button"><span>Проверить</span></button>
                                                             </section>
@@ -205,45 +194,7 @@
         </div>
     </div>
 </div>
-{{--<style>--}}
 
-{{--    /* Style the tab */--}}
-{{--    .tab {--}}
-{{--        overflow: hidden;--}}
-{{--        border: 1px solid #ccc;--}}
-{{--        background-color: #f1f1f1;--}}
-{{--    }--}}
-
-{{--    /* Style the buttons inside the tab */--}}
-{{--    .tab button {--}}
-{{--        background-color: inherit;--}}
-{{--        float: left;--}}
-{{--        border: none;--}}
-{{--        outline: none;--}}
-{{--        cursor: pointer;--}}
-{{--        padding: 14px 16px;--}}
-{{--        transition: 0.3s;--}}
-{{--        font-size: 17px;--}}
-{{--    }--}}
-
-{{--    /* Change background color of buttons on hover */--}}
-{{--    .tab button:hover {--}}
-{{--        background-color: #ddd;--}}
-{{--    }--}}
-
-{{--    /* Create an active/current tablink class */--}}
-{{--    .tab button.active {--}}
-{{--        background-color: #ccc;--}}
-{{--    }--}}
-
-{{--    /* Style the tab content */--}}
-{{--    .tabcontent {--}}
-{{--        display: none;--}}
-{{--        padding: 6px 12px;--}}
-{{--        border: 1px solid #ccc;--}}
-{{--        border-top: none;--}}
-{{--    }--}}
-{{--</style>--}}
 
 <style>
     .editor-js{
@@ -251,6 +202,14 @@
         height: 420px;
         width: 100%;
         color: white;
+    }
+
+    .lesson_text{
+        border: none; width: 100%; min-height: 350px; max-height: 350px;
+    }
+
+    .lesson_text:focus{
+        outline: none;
     }
 </style>
 
@@ -297,40 +256,11 @@
         theme: 'dracula',
     })
 
-    // const editor_js = CodeMirror.fromTextArea(document.getElementById("editor-js"), {
-    //     mode: 'javascript',
-    //     value: '',
-    //     // lineNumbers: true,
-    //     autoCloseTags: true,
-    //     autoCloseBrackets: true,
-    //     theme: 'dracula',
-    // })
 
-
-    // console.log(editor_js.value)
 
     editor_html.setSize(null, 420);
     editor_css.setSize(null, 420);
-    //editor_js.setSize(null, 420);
 
-    // //Append HTML
-    // const liveRoom = document.getElementById('output');
-    // liveRoom.contentWindow.document.body.innerHTML = '';
-    //
-    // const style = document.createElement('style');
-    // style.setAttribute('id', 'style');
-    // style.innerHTML = '';
-    //
-    // const script = document.createElement('script');
-    // script.innerHTML = '';
-    //
-    // liveRoom.contentWindow.document.head.appendChild(style);
-    // liveRoom.contentWindow.document.head.appendChild(script)
-    //
-    // // Event Listener
-    // CodeMirror.on(editor_html, 'change', function () {
-    //     liveRoom.contentWindow.document.body.innerHTML = editor_html.getValue();
-    // })
 
     const liveRoom = document.getElementById('output');
     liveRoom.contentWindow.document.body.innerHTML = '';
@@ -343,7 +273,6 @@
     script.innerHTML = ''
 
     liveRoom.contentWindow.document.head.appendChild(style);
-    // liveRoom.contentWindow.document.head.appendChild(script);
 
     CodeMirror.on(editor_html, 'focus', function () {
         liveRoom.contentWindow.document.body.innerHTML = editor_html.getValue();
@@ -352,47 +281,28 @@
     CodeMirror.on(editor_html, 'change', function () {
         liveRoom.contentWindow.document.body.innerHTML = editor_html.getValue();
     })
-    // CodeMirror.on(editor_html, 'focus', function () {
-    //     liveRoom.contentWindow.document.body.innerHTML = editor_html.getValue();
-    // })
+
 
     CodeMirror.on(editor_css, 'change', function () {
         liveRoom.contentWindow.document.getElementById('style').innerHTML = editor_css.getValue();
     })
 
-    // CodeMirror.on(editor_js, 'change', function () {
-    //     liveRoom.contentWindow.document.getElementById('script').innerHTML = editor_js.getValue();
-    // })
 
-
-    // function run(){
-    //     let jsCode = document.querySelectorAll("#js-code").value;
-    //     let output = document.querySelectorAll("#output");
-    //     // console.log(htmlCode, cssCode, jsCode, output)
-    //     output.contentWindow.eval(jsCode);
-    // }
-    // run();
-    // document.querySelectorAll("#js-code").addEventListener("keyup", run);
 
 </script>
 
 <script type="text/javascript">
     function run(){
-        // let htmlCode = document.querySelector(".editor #html-code").value;
-        // let cssCode = "<style>"+document.querySelector(".editor #css-code").value+"</style>";
+
         let jsCode = document.querySelector(".editor #editor-js").value;
         let output = document.querySelector(".editor #output");
-        // console.log(htmlCode, cssCode, jsCode, output)
-        // output.contentDocument.body.innerHTML = htmlCode+cssCode;
-        //console.log(jsCode);
+
         output.contentWindow.eval(jsCode);
     }
     run();
-    // document.querySelector(".editor #html-code").addEventListener("keyup", run);
-    // document.querySelector(".editor #css-code").addEventListener("keyup", run);
+
     document.querySelector(".editor #editor-js").addEventListener("keyup", run);
 
-    // document.body.style.background = 'blue'
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

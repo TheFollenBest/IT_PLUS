@@ -9,5 +9,7 @@ class User_lessons extends Model
 {
     use HasFactory;
 
-
+    public function lessons(){
+        return $this-> hasMany(Lessons::class, 'id_lesson');
+    }
 }

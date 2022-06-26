@@ -48,11 +48,6 @@
                 <a class="nav-link header__login" href="{{ route('login') }}">{{ __('Войти') }}</a>
             @endif
 
-            {{--                    @if (Route::has('register'))--}}
-            {{--                        <li class="nav-item">--}}
-            {{--                            <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>--}}
-            {{--                        </li>--}}
-            {{--                    @endif--}}
         @else
             <div class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-item__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

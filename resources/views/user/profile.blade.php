@@ -21,39 +21,12 @@
                     <div class="profile-card__name">{{ Auth::user()->name }}</div>
                     <div class="profile-card__txt">{{ Auth::user()->email }}</div>
 
-
-{{--                    <div class="profile-card-inf">--}}
-{{--                        <div class="profile-card-inf__item">--}}
-{{--                            <div class="profile-card-inf__title">1598</div>--}}
-{{--                            <div class="profile-card-inf__txt">Followers</div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="profile-card-inf__item">--}}
-{{--                            <div class="profile-card-inf__title">65</div>--}}
-{{--                            <div class="profile-card-inf__txt">Following</div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="profile-card-inf__item">--}}
-{{--                            <div class="profile-card-inf__title">123</div>--}}
-{{--                            <div class="profile-card-inf__txt">Articles</div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="profile-card-inf__item">--}}
-{{--                            <div class="profile-card-inf__title">85</div>--}}
-{{--                            <div class="profile-card-inf__txt">Works</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-                    <div class="profile-card__progress">
-
+                    <div class="profile-card__progress" style="margin-top: 50px">
 
                         @foreach($courses as $course)
-
-                            <p>{{ $course->name }} пройдено: {{$userAnswer->where('id_status', 2)->where('id_user', Auth::user()->id)->count()}} из {{ $lessons->where('id_course', $course->id)->count()}}</p>
-                        <div class="progress" style="height: 20px;">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                            <p class="profile-card__txt">{{ $course->name }} имеет:  {{ $lessons->where('id_course', $course->id)->count()}} уроков(а)</p>
                         @endforeach
+                            <p class="card_text"> Всего пройдено: {{$userAnswer->where('id_status', 2)->where('id_user', Auth::user()->id)->count()}}</p>
 
                     <div class="profile-card-ctr">
 
@@ -69,5 +42,12 @@
 
         </div>
     </section>
+
+    <style>
+        .card_text{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
     <!-- PROFILE END -->
 @endsection

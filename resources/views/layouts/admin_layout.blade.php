@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-{{--    <meta charset="utf-8">--}}
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Админ-панель - @yield('title')</title>
     <link rel="icon" href="/img/logo.ico">

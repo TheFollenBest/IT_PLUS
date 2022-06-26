@@ -238,20 +238,21 @@
         <section class="faq container">
             <h2 class="faq__title">Часто задаваемые вопросы</h2>
             <div class="faq__wrp">
-                <button class="faq__btn">У меня нет опыта в веб-разработке. Подходит ли мне этот курс?</button>
+                <button class="faq__btn">У меня нет опыта в веб-разработке. Подходят ли мне эти курсы?</button>
                 <div class="faq__inner">
-                    <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="faq__text">Да, курсы подходят новичкам</p>
                 </div>
 
                 <button class="faq__btn">Это бесплатно?</button>
                 <div class="faq__inner">
-                    <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="faq__text">Обучение на платформе абсолютно бесплатно</p>
                 </div>
 
-                <button class="faq__btn">У меня нет опыта в веб-разработке. Подходит ли мне этот курс?</button>
+                <button class="faq__btn">Нужно что-то устанавливать для работы?</button>
                 <div class="faq__inner">
-                    <p class="faq__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="faq__text">Нет, курсы содержат в себе тренажеры</p>
                 </div>
+
             </div>
         </section>
 

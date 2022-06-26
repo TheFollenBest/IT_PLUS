@@ -4,11 +4,6 @@
     Все уроки
 @endsection
 
-{{--@push('style')--}}
-{{--    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />--}}
-{{--    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>--}}
-{{--@endpush--}}
-
 @section('content')
 
     <section class="cards container" style="min-height: 60vh; padding-bottom: 100px">
@@ -18,7 +13,6 @@
             @foreach($courseLesson as $lesson)
                 <li class="cards__item cards__item--blue cards-item">
                     <p class="cards-item__title cards-item__title--white">{{ $lesson->name }}</p>
-{{--                    <a href="{{ route('user_lessons.show', $lesson['id']) }}" class="cards-item__link cards-item__link--white">Подробнее</a>--}}
                     <a href="{{ route('user_lessons.edit', [$course, $lesson]) }}" class="cards-item__link cards-item__link--white">Начать</a>
 
                 </li>
@@ -36,7 +30,7 @@
             padding: 20px 15px;
             display: flex;
             flex-direction: row;
-            /* align-items: center; */
+
             justify-content: space-between;
             border: black solid 4px;
         }

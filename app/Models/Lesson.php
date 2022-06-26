@@ -9,6 +9,10 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    public function user_lessons(){
+        return $this-> belongsTo(User_lessons::class, 'id_lesson');
+    }
+
     public function courses(){
         return $this-> belongsTo(Course::class, 'id_course');
     }
